@@ -97,6 +97,7 @@ resource "aws_security_group" "cba_tf_sg" {
 
 
 resource "aws_instance" "cba_tf_instance" { 
+  count = 2
   ami = data.aws_ssm_parameter.instance_ami.value
   instance_type = var.instance_type
   subnet_id = aws_subnet.cba_public.id
